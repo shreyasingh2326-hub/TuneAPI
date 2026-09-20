@@ -1,0 +1,68 @@
+This is a project for spotify clone backend:
+We have two types of users one can just listen to songs and one for artist who can even create songs
+
+Flow of project:
+install package: express mongoose dotenv jsonwebtoken cookie-parser
+src
+app.js
+server.js
+db folder => db file
+.env
+model folder : user.model => schema
+routes folder : auth.routes => apis
+controller
+
+Password Hash: A password hash is a one-way mathematical transformation of a plaintext password 
+into a fixed-length string of jumbled characters
+ If a server gets hacked, attackers only see random hash strings instead of plain text passwords.
+ In hashing for same text we always get the same jumbled string.
+ cannot convert the hash back to plain text
+
+ const hash = await bcrypt.hash(password,10)
+
+ 10 is used for salting
+
+ Adding a unique, random string of characters (the "salt") to a password before converting it into a 
+ secure code via a hash function. 
+
+ In database we save hash and not the exact password.
+
+ DNS(domain name system) = kisi website/database ke naam ko uske actual internet address mein convert karne wala system.
+  
+  {
+    "username":"shreya",
+    "email":"test@test.com",
+    "password":"test"
+} 
+
+in postman if we dont pass role then default jo hota hai user wo chla jaiga
+
+creating song is not a part of authentication it is a part of authorization which means what you are allowed to do
+
+services folder is for imagekit
+
+Multer ka main use hai file upload karwana in a Node.js + Express backend.
+
+Multer ko batana padta hai ki uploaded file ko kahan store karna hai.
+
+memoryStorage() ka matlab:
+
+File ko server ki RAM/memory me temporarily store karo.
+
+upload.single("music")
+iska mtlb hai ki ek hi file upload krna hai or file field ka naam music hona chahiye
+
+Body → form-data
+
+KEY       TYPE       VALUE
+music     File       song.mp3
+
+POST /upload
+      ↓
+upload.single("music")
+      ↓
+Multer file receive karega
+      ↓
+req.file me file available
+      ↓
+musicController.createMusic
