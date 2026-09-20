@@ -12,7 +12,7 @@ const router = express.Router();
 router.post("/upload", authmiddleware.authArtist, upload.single("music"), musicController.createMusic);
 router.post("/album",authmiddleware.authArtist, musicController.createAlbum);
 router.get("/",authmiddleware.authUser, musicController.getAllMusic);
-router.get("/album",authmiddleware.authUser, musicController.getAllMusic);
+router.get("/album",authmiddleware.authUser, musicController.getAllAlbums);
 router.get("/albums/:albumId",authmiddleware.authUser, musicController.getAlbumById);
 
 module.exports = router;
